@@ -4,7 +4,7 @@ public class Calci {
 
 	public static void main(String[] args) {
 
-      System.out.println("Calculator Project Loading....");
+      System.out.println("Calculator Project Loading....soon");
 	}
 
 }
