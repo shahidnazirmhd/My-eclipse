@@ -13,6 +13,7 @@ public class DemoException4 {
 		try{
 			if(i==10) {
 			throw new Number10Exception();
+				//throw new Exception();
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
