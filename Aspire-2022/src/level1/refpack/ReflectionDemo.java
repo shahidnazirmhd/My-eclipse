@@ -1,6 +1,6 @@
-package level1.refpack;
+package level1.refpack;                //  Reflection - Knowing the unknown.
 
-import java.lang.reflect.Field;           //  Reflection - Knowing the unknown.
+import java.lang.reflect.Field;           
 import java.lang.reflect.Method;
 
 public class ReflectionDemo {
