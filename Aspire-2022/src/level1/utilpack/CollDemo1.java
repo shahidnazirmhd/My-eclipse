@@ -1,6 +1,7 @@
 package level1.utilpack;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.ListIterator;
 
@@ -10,12 +11,15 @@ public class CollDemo1 {
 		int array[]=new int[4];
 		System.out.println(array.length);
 		ArrayList<String> alist=new ArrayList();
+		System.out.println(alist);
 		System.out.println("After creating  :"+alist.size());
 		alist.add("Muhammad");
 		alist.add("Ahamed");
 		alist.add("Mehamood");
+		System.out.println(alist);
 		System.out.println("After adding  :"+alist.size());
 		alist.remove(1);
+		System.out.println(alist);
 		System.out.println("After removing  :"+alist.size());
 		System.out.println(alist.get(1));
 		for (int i = 0; i < alist.size(); i++) {
@@ -39,6 +43,7 @@ public class CollDemo1 {
 		while(lisIter.hasPrevious()) {
 			System.out.println(lisIter.previous());
 		}
+		System.out.println(alist);
 	}
 
 }
