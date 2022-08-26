@@ -27,7 +27,7 @@ public class RequestProcessor {
 			String nxtPage=prop.getProperty(result);
 			
 			RequestDispatcher rd=request.getRequestDispatcher(nxtPage);
-			rd.forward(request, response);
+			rd.forward(request,response);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

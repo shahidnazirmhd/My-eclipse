@@ -19,7 +19,7 @@ public class DbCon {
 			try {
 				Connection con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
 				PreparedStatement ps=con.prepareStatement("select * from webUsers where uname=? and upass=?");
-				ps.setString(1, uname);
+				ps.setString(1,uname);
 				ps.setString(2, upass);
 				ResultSet rs=ps.executeQuery();
 				if (rs.next()) {
