@@ -7,13 +7,12 @@ public class RegisterAction extends Action{
 		@Override
 		public String execute(HttpServletRequest request, HttpServletResponse response) {
 			String fName=request.getParameter("fullName");
-			int bYear=Integer.parseInt(request.getParameter("birthYear"));
 			String userN=request.getParameter("uname");
 			String passW=request.getParameter("upass");
 			String ucity=request.getParameter("city");
 			long mNum=Long.parseLong(request.getParameter("mobileNum"));
 			DbCon dbcon=new DbCon();
-			int add=dbcon.register(fName, bYear, userN, passW, ucity, mNum);
+			int add=dbcon.register(fName, userN, passW, ucity, mNum);
 			if(add==1) {
 				return "register.success";
 			}else {

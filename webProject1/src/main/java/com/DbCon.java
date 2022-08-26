@@ -1,0 +1,95 @@
+package com;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class DbCon {
+		public DbCon() {
+			try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		public boolean checkUser(String uname,String upass) {
+			
+			try {
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement ps=con.prepareStatement("select flag from webUsers where uname=? and upass=?");
+				ps.setString(1, uname);
+				ps.setString(2, upass);
+				ResultSet rs=ps.executeQuery();
+				if (rs.next()) {
+						return true;
+			
+				}else {
+					return false;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+			
+		}
+		public boolean checkFlag(String uname,String upass) {
+			
+			try {
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement ps=con.prepareStatement("select flag from webUsers where uname=? and upass=?");
+				ps.setString(1, uname);
+				ps.setString(2, upass);
+				ResultSet rs=ps.executeQuery();
+				int f=0;
+				if(rs.next()) {
+					 f=rs.getInt(1);
+				}
+				if (f==0) {
+					Connection con2= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+					PreparedStatement psu=con2.prepareStatement("update webUsers set flag=1 where uname=? and upass=?");
+					psu.setString(1, uname);
+					psu.setString(2, upass);
+					psu.executeUpdate();
+					return true;
+				}else {
+					return false;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		public boolean reSetFlag(String uname,String upass) {
+			try {
+				Connection con3= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement psr=con3.prepareStatement("update webUsers set flag=0 where uname=? and upass=?");
+				psr.setString(1, uname);
+				psr.setString(2, upass);
+				psr.executeUpdate();
+				return true;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		public int register(String fullName,String uname,String upass,String city,long mobileNum) {
+			try {
+			Connection con4=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+			PreparedStatement psre=con4.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
+			psre.setString(1, fullName);
+			psre.setString(2, uname);
+			psre.setString(3, upass);
+			psre.setString(4, city);
+			psre.setLong(5, mobileNum);
+			psre.setInt(6, 0);
+			int i=psre.executeUpdate();
+			return i;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return 0;
+			}
+		}
+		
+}

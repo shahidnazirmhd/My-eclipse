@@ -33,16 +33,17 @@ public class DbCon {
 			}
 			
 		}
-		public int register(String fullName,int birthYear,String uname,String upass,String city,long mobileNum) {
+		public int register(String fullName,String uname,String upass,String city,long mobileNum) {
 			try {
 			Connection con=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
 			PreparedStatement ps=con.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
 			ps.setString(1, fullName);
-			ps.setInt(2, birthYear);
-			ps.setString(3, uname);
-			ps.setString(4, upass);
-			ps.setString(5, city);
-			ps.setLong(6, mobileNum);
+			
+			ps.setString(2, uname);
+			ps.setString(3, upass);
+			ps.setString(4, city);
+			ps.setLong(5, mobileNum);
+			ps.setInt(6, 0);
 			int i=ps.executeUpdate();
 			return i;
 			} catch (Exception e) {

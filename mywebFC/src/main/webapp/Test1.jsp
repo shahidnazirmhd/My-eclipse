@@ -6,7 +6,7 @@ Scriplet-Goes in service method.
 	//any java program
 	Date d=new Date();
 	out.println("\n"+d);
-	List li;
+	//List li;
 	out.println(name);
 	sayHello();
 	
@@ -26,3 +26,4 @@ Also goes into service method and also use implicit object.
 <%=application.getRealPath("")%>
 <%="Hello world..." %>
 <h1><%=session.getAttribute("myname")%></h1>
+<h1><%=request.getParameter("name")%></h1>
