@@ -76,16 +76,34 @@ public class DbCon {
 		}
 		public int register(String fullName,String uname,String upass,String city,long mobileNum) {
 			try {
-			Connection con4=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-			PreparedStatement psre=con4.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
-			psre.setString(1, fullName);
-			psre.setString(2, uname);
-			psre.setString(3, upass);
-			psre.setString(4, city);
-			psre.setLong(5, mobileNum);
-			psre.setInt(6, 0);
-			int i=psre.executeUpdate();
-			return i;
+				Connection con4=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement psc1=con4.prepareStatement("select uname from webUsers where uname=?");
+				psc1.setString(1, uname);
+				ResultSet res1=psc1.executeQuery();
+				if (!res1.next()) {
+					Connection con6=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+					PreparedStatement psc2=con6.prepareStatement("select mobileNum from webUsers where mobileNum=?");
+					psc2.setLong(1, mobileNum);
+					ResultSet res2=psc2.executeQuery();
+					if (!res2.next()) {
+						Connection con5=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+						PreparedStatement psre=con5.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
+						psre.setString(1, fullName);
+						psre.setString(2, uname);
+						psre.setString(3, upass);
+						psre.setString(4, city);
+						psre.setLong(5, mobileNum);
+						psre.setInt(6, 0);
+						int i=psre.executeUpdate();
+						return i;
+					}else {
+						return 3;
+					}
+					
+				}else {
+					return 2;
+				}
+			
 			} catch (Exception e) {
 				e.printStackTrace();
 				return 0;

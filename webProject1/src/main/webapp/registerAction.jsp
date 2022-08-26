@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="WEB-INF/mytags3.tld" prefix="my" %>
     <%@ include file="register.jsp" %>
+    <style>h3 {text-align: center; color: red;}</style>
 <h3><my:reisterUser 
 fullName="<%=request.getParameter(\"fullName\")%>" 
 uname="<%=request.getParameter(\"uname\")%>"

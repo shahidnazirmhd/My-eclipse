@@ -44,18 +44,35 @@ public class MyCustomTag3 extends TagSupport {
 	@Override
 	public int doEndTag() throws JspException {
 		JspWriter out=pageContext.getOut();
-		long mNum=Long.parseLong(mobileNum);
-		int addStatus=db.register(fullName, uname, upass, city,mNum);
-		if(addStatus==1) {
-			try {
-				RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/login.jsp");
-				rd.forward(pageContext.getRequest(), pageContext.getResponse());
-				}catch(Exception e) {e.printStackTrace();}
+		if(fullName!=""&&uname!=""&&upass!=""&&city!=""&&mobileNum!="") {
+			long mNum=Long.parseLong(mobileNum);
+			int addStatus=db.register(fullName, uname, upass, city,mNum);
+			if(addStatus==1) {
+				try {
+					RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/login.jsp");
+					rd.forward(pageContext.getRequest(), pageContext.getResponse());
+					}catch(Exception e) {e.printStackTrace();}
+			}else if(addStatus==2){
+				try {
+					out.println("UserName Already Exist-Try different");
+					}catch(Exception e) {e.printStackTrace();}
+			}else if(addStatus==3){
+				try {
+					out.println("You already have an account on this mobile number.");
+					}catch(Exception e) {e.printStackTrace();}
+			}
+			
+			else {
+				try {
+					out.println("Registration Failed - Something went wrong!");
+					}catch(Exception e) {e.printStackTrace();}
+			}
 		}else {
 			try {
-				out.println("Registration Failed - Something went wrong!");
+				out.println("Please enter all details-correctly!");
 				}catch(Exception e) {e.printStackTrace();}
 		}
+		
 		return super.doEndTag();
 	}
 	

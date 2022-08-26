@@ -12,7 +12,7 @@
 		<input type="hidden" name="formid" value="logout">
 		<input type="hidden" name="uname" value="<%=request.getAttribute("Auname") %>">
 		<input type="hidden" name="upass" value="<%=request.getAttribute("Aupass") %>">	
-		<input style="margin-left:1290px" type="submit" value="Logout">
+		<input style="margin-left:1150px" type="submit" value="Logout">
 		</form>
 <hr>		
 		<br><br><br> <h1>Welcome to the page</h1>

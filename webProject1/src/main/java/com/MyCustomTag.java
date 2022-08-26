@@ -39,28 +39,35 @@ public class MyCustomTag extends TagSupport{
 		@Override
 		public int doEndTag() throws JspException {
 			JspWriter out=pageContext.getOut();
-			boolean uStatus=db.checkUser(uname, upass);
-			boolean fStatus=db.checkFlag(uname, upass);
-			if(uStatus){
-				if (fStatus) {
+			if(uname!=""&&upass!="") {
+				boolean uStatus=db.checkUser(uname, upass);
+				boolean fStatus=db.checkFlag(uname, upass);
+				if(uStatus){
+					if (fStatus) {
+						try {
+							pageContext.getRequest().setAttribute("Auname", uname);
+							pageContext.getRequest().setAttribute("Aupass", upass);
+							RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/welcome.jsp");
+							rd.forward(pageContext.getRequest(), pageContext.getResponse());
+							}catch(Exception e) {e.printStackTrace();}
+					} else {
+						
+						try {
+							out.println("You are Already logged in");
+							}catch(Exception e) {e.printStackTrace();}
+					}
+				}else{
 					try {
-						pageContext.getRequest().setAttribute("Auname", uname);
-						pageContext.getRequest().setAttribute("Aupass", upass);
-						RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/welcome.jsp");
+						RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/register.jsp");
 						rd.forward(pageContext.getRequest(), pageContext.getResponse());
 						}catch(Exception e) {e.printStackTrace();}
-				} else {
-					
-					try {
-						out.println("You are Already logged in");
-						}catch(Exception e) {e.printStackTrace();}
 				}
-			}else{
+			}else {
 				try {
-					RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/register.jsp");
-					rd.forward(pageContext.getRequest(), pageContext.getResponse());
+					out.println("Please enter all details");
 					}catch(Exception e) {e.printStackTrace();}
 			}
+			
 			return super.doEndTag();
 		}
 		

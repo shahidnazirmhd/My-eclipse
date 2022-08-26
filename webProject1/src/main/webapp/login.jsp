@@ -16,7 +16,10 @@ h1 {text-align: center;}
 		<input type="hidden" name="formid" value="login">
 		UserName:<br><input type="text" name="uname"><br><br><br>
 		PassWord:<br><input type="password" name="upass"><br><br>
-		<input type="submit" value="Login">
+		&emsp;&emsp;&emsp;&ensp;&ensp;<input type="submit" value="Login">
+		</form><br><form style="margin: auto; width: 220px;" action="registerFromlogin.do">
+		Don't have an account?<input type="submit" value="Register">
+		<input type="hidden" name="formid" value="registerFromlogin">
 		</form>
 			
 
