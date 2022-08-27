@@ -47,8 +47,8 @@ public class DbCon {
 					 f=rs.getInt(1);
 				}
 				if (f==0) {
-					Connection con2= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-					PreparedStatement psu=con2.prepareStatement("update webUsers set flag=1 where uname=? and upass=?");
+				con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+					PreparedStatement psu=con.prepareStatement("update webUsers set flag=1 where uname=? and upass=?");
 					psu.setString(1, uname);
 					psu.setString(2, upass);
 					psu.executeUpdate();
@@ -63,8 +63,8 @@ public class DbCon {
 		}
 		public boolean reSetFlag(String uname,String upass) {
 			try {
-				Connection con3= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-				PreparedStatement psr=con3.prepareStatement("update webUsers set flag=0 where uname=? and upass=?");
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement psr=con.prepareStatement("update webUsers set flag=0 where uname=? and upass=?");
 				psr.setString(1, uname);
 				psr.setString(2, upass);
 				psr.executeUpdate();
@@ -76,18 +76,18 @@ public class DbCon {
 		}
 		public int register(String fullName,String uname,String upass,String city,long mobileNum) {
 			try {
-				Connection con4=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-				PreparedStatement psc1=con4.prepareStatement("select uname from webUsers where uname=?");
+				Connection con=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement psc1=con.prepareStatement("select uname from webUsers where uname=?");
 				psc1.setString(1, uname);
 				ResultSet res1=psc1.executeQuery();
 				if (!res1.next()) {
-					Connection con6=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-					PreparedStatement psc2=con6.prepareStatement("select mobileNum from webUsers where mobileNum=?");
+					con=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+					PreparedStatement psc2=con.prepareStatement("select mobileNum from webUsers where mobileNum=?");
 					psc2.setLong(1, mobileNum);
 					ResultSet res2=psc2.executeQuery();
 					if (!res2.next()) {
-						Connection con5=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
-						PreparedStatement psre=con5.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
+						con=	DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+						PreparedStatement psre=con.prepareStatement("insert into webUsers values (?,?,?,?,?,?)");
 						psre.setString(1, fullName);
 						psre.setString(2, uname);
 						psre.setString(3, upass);
