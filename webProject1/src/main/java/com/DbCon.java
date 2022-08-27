@@ -47,7 +47,7 @@ public class DbCon {
 					 f=rs.getInt(1);
 				}
 				if (f==0) {
-				con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				 con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
 					PreparedStatement psu=con.prepareStatement("update webUsers set flag=1 where uname=? and upass=?");
 					psu.setString(1, uname);
 					psu.setString(2, upass);
