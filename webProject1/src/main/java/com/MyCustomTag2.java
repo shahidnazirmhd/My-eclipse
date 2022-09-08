@@ -23,11 +23,11 @@ public class MyCustomTag2 extends TagSupport {
 	public void setUpass(String upass) {
 		this.upass = upass;
 	}
-	DbCon db=new DbCon();
+	//DbCon db=new DbCon();
 	@Override
 	public int doEndTag() throws JspException {
 		JspWriter out=pageContext.getOut();
-		boolean status=db.reSetFlag(uname, upass);
+		boolean status=DbCon.getInstance().reSetFlag(uname, upass);
 		if(status) {
 			try {
 				RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/login.jsp");

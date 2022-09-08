@@ -40,13 +40,13 @@ public class MyCustomTag3 extends TagSupport {
 	public void setMobileNum(String mobileNum) {
 		this.mobileNum = mobileNum;
 	}
-	DbCon db=new DbCon();
+	//DbCon db=new DbCon();
 	@Override
 	public int doEndTag() throws JspException {
 		JspWriter out=pageContext.getOut();
 		if(fullName!=""&&uname!=""&&upass!=""&&city!=""&&mobileNum!="") {
 			long mNum=Long.parseLong(mobileNum);
-			int addStatus=db.register(fullName, uname, upass, city,mNum);
+			int addStatus=DbCon.getInstance().register(fullName, uname, upass, city,mNum);
 			if(addStatus==1) {
 				try {
 					RequestDispatcher rd = pageContext.getServletContext().getRequestDispatcher("/login.jsp");

@@ -31,7 +31,7 @@ public class MyCustomTag extends TagSupport{
 		public void setUpass(String upass) {
 			this.upass = upass;
 		}
-		DbCon db=new DbCon();
+		//DbCon db=new DbCon();
 		
 		
 
@@ -40,8 +40,8 @@ public class MyCustomTag extends TagSupport{
 		public int doEndTag() throws JspException {
 			JspWriter out=pageContext.getOut();
 			if(uname!=""&&upass!="") {
-				boolean uStatus=db.checkUser(uname, upass);
-				boolean fStatus=db.checkFlag(uname, upass);
+				boolean uStatus=DbCon.getInstance().checkUser(uname, upass);
+				boolean fStatus=DbCon.getInstance().checkFlag(uname, upass);
 				if(uStatus){
 					if (fStatus) {
 						try {

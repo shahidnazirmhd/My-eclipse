@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DbCon {
+	private static DbCon instance;
 		public DbCon() {
 			try {
 					Class.forName("com.mysql.cj.jdbc.Driver");
@@ -13,6 +14,14 @@ public class DbCon {
 				e.printStackTrace();
 			}
 		}
+		public static synchronized DbCon getInstance(){
+	        if (null!=instance){
+	            return instance;
+	        }else {
+	            instance=new DbCon();
+	            return instance;
+	        }
+	    }
 		
 		public boolean checkUser(String uname,String upass) {
 			
