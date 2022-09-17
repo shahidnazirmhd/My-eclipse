@@ -22,9 +22,21 @@ public class SessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent se)  { 
         System.out.println("session created...");
         HttpSession session=se.getSession();
-    	//session.setAttribute("lang", lang);
-    	ResourceBundle rb=ResourceBundle.getBundle("dictionary", new Locale("en"));
+        String lang=getLang();
+    	ResourceBundle rb=ResourceBundle.getBundle("dictionary", new Locale(lang));
     	session.setAttribute("rb",rb);
+    }
+    public String getLang() {
+    	try (FileReader fr = new FileReader("D:\\git\\My-eclipse\\eCommerceSite1\\lang.txt");){
+    		String data;
+    		char ch[]=new char[2];
+    		fr.read(ch);
+    		data=new String(ch);
+    		return data;
+        }catch (Exception e) {
+            e.getStackTrace();
+           return null;
+        }
     }
 
 	/**
