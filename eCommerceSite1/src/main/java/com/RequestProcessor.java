@@ -1,8 +1,6 @@
 package com;
 
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -25,7 +23,7 @@ public class RequestProcessor {
 			Action action=(Action)Class.forName(actionClassName).newInstance();
 			String result=action.execute(request, response);
 			String nxtPage=prop.getProperty(result);
-
+			
 			RequestDispatcher rd=request.getRequestDispatcher(nxtPage);
 			rd.forward(request,response);
 			
@@ -33,4 +31,5 @@ public class RequestProcessor {
 			e.printStackTrace();
 		}
 	}
-}
+	}
+

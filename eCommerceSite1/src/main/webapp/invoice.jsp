@@ -13,8 +13,7 @@
 			Enumeration<String> en=session.getAttributeNames();
 		while(en.hasMoreElements()){
 			String name=en.nextElement();
-			Object value1=session.getAttribute(name);
-			String value=value1.toString();
+			Object value=session.getAttribute(name);
 			out.println("<h1>"+name+":"+value+"</h1>");
 		}
 		
