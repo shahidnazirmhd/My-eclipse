@@ -23,9 +23,12 @@ public class RequestProcessor {
 			Action action=(Action)Class.forName(actionClassName).newInstance();
 			String result=action.execute(request, response);
 			String nxtPage=prop.getProperty(result);
-			
+			if(nxtPage!=null) {
 			RequestDispatcher rd=request.getRequestDispatcher(nxtPage);
-			rd.forward(request,response);
+			rd.forward(request,response);}
+			else {RequestDispatcher rd=request.getRequestDispatcher(result);
+			rd.forward(request,response);}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();

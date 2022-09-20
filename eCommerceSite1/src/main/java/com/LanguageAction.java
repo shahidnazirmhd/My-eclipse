@@ -14,23 +14,12 @@ public class LanguageAction extends Action {
 @Override
 public String execute(HttpServletRequest request, HttpServletResponse response) {
 	String lang=request.getParameter("lang");
-	setLang(lang);
+	Lang.getInstance().setLang(lang);
 	HttpSession session=request.getSession();
 	ResourceBundle rb=ResourceBundle.getBundle("dictionary", new Locale(lang));
-	session.setAttribute("rb",rb);		
-	return "language.changed";
-}
-public void setLang(String lang) {
-	Lang set=new Lang(lang);
+	session.setAttribute("rb",rb);
+	String pname=session.getAttribute("pagename").toString();
+	return pname+".jsp";
 	
-	 String data = set.getLang();
-	  
-    try (FileWriter output = new FileWriter("D:\\git\\My-eclipse\\eCommerceSite1\\lang.txt",false);){
-        output.write(data);
-        System.out.println(data);
-    }catch (Exception e) {
-        e.getStackTrace();
-    }
 }
-
 }

@@ -1,0 +1,10 @@
+function submithome() {document.getElementById("home").submit();}
+function submitshirt() {document.getElementById("shirt").submit();}
+function submitpant() {document.getElementById("pant").submit();}
+function submitjeans() {document.getElementById("jeans").submit();}
+function submitTshirt() {document.getElementById("tshirt").submit();}
+function submitfootwear() {document.getElementById("footw").submit();}
+function submitaccesso() {document.getElementById("accesso").submit();}
+function submitshowall() {document.getElementById("showall").submit();}
+function submitabout() {document.getElementById("about").submit();}
+function gotoindex() {document.getElementById("index").submit();}

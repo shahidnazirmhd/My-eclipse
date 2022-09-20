@@ -4,14 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="header1.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-#selectLang {margin: -40px 0 0 1080px;}
-#shopName1 {margin: -10px 0px 0px 5px;}
-#shopName2 {margin: -10px 0px 0px 50px;}
-.userCred {margin: 10px 0 -2px 1100px;}
-</style>
+<title>Fallo Fashion-Index</title>
 </head>
 <body>
 <%
@@ -35,14 +30,16 @@
 <hr>
 <h1 id="shopName1">Fallo</h1>
 <h3 id="shopName2">fashion</h3>
-<h6 id="selectLang">Site Language: <a href="#" onclick="submitEnglish()"> English</a>&ensp;<a href="#" onclick="submitTamil()">தமிழ்</a>&ensp;<a href="#" onclick="submitHindi()">हिन्दी</a></h6>
-<div class="userCred"><button id="btnLogin" type="submit" form="tolog"><%=rb.getString("login")%></button>&emsp;<button id="btnRegister" type="submit" form="toreg"><%=rb.getString("register")%></button></div>
-<hr>		
+<div class="btn-group">
+ <button type="submit" form="lge">Engilsh</button>
+ <button type="submit" form="lgt">தமிழ்</button>
+ <button type="submit" form="lgh">हिन्दी</button>
+</div>
+<h6 id="version"><%=rb.getString("version")%>:</h6>
+<div class="rsidebtns"><button class="btnlogin" type="submit" form="tolog"><%=rb.getString("login")%></button>
+<button class="btnregi" type="submit" form="toreg"><%=rb.getString("register")%></button>
+</div>
+<hr class="end">		
 </header>
- <script>
-            function submitEnglish() {document.getElementById("lge").submit();}
-            function submitTamil() {document.getElementById("lgt").submit();}
-            function submitHindi() {document.getElementById("lgh").submit();}
- </script>
 </body>
 </html>
