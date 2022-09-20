@@ -79,9 +79,11 @@ border: 2px solid red;
 background-color: #e7e7e7;
 }
 header {background-color: GhostWhite;}
+.cardcontainer {width: 1200px; height: 1200px; border: 1px solid #c3c3c3; display: flex; flex-flow: row wrap;}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
+  width: fit-content;
+  height: fit-content;
   text-align: center;
   font-family: arial;
 }

@@ -30,13 +30,13 @@
 		products.add("bai");
 				for (String i : products) {
 			%> 
-  <div class="card">
+  <div class="cardcontainer"><div class="card">
   <img src="no_product_image.png" alt="Product Image" style="width:100%">
   <h1>Product Name</h1>
   <p class="price">₹00.00</p>
   <button class="btnaddcart">Add to Cart</button>
   <button class="btnbuy">Buy</button>
-  </div>
+  </div></div>
 <%
 }%> 
 </body>
