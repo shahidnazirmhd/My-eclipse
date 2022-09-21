@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbCon {
 	private static DbCon instance;
@@ -117,5 +119,27 @@ public class DbCon {
 				return 0;
 			}
 		}
+		public List<ProductModel> getAllProducts() {
+			List<ProductModel> collect = new ArrayList<>();
+			try {
+				Connection con= DriverManager.getConnection("jdbc:mysql://localhost/mydb","root","passmysql");
+				PreparedStatement ps=con.prepareStatement("select * from products");
+				ResultSet rs=ps.executeQuery();
+				 while (rs.next()) {
+					 ProductModel row = new ProductModel();
+		                row.setId(rs.getInt("id"));
+		                row.setName(rs.getString("name"));
+		                row.setCategory(rs.getString("category"));
+		                row.setPrice(rs.getDouble("price"));
+		                row.setImage(rs.getString("image"));
+
+		                collect.add(row);
+		            }
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return collect;
+		}
+		
 		
 }

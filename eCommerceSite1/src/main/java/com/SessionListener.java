@@ -4,6 +4,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -25,6 +27,8 @@ public class SessionListener implements HttpSessionListener {
         String lang=Lang.getInstance().getLang();
     	ResourceBundle rb=ResourceBundle.getBundle("dictionary", new Locale(lang));
     	session.setAttribute("rb",rb);
+    	List<ProductModel> product = DbCon.getInstance().getAllProducts();
+    	session.setAttribute("allproduct",product);
     }
 	/**
      * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)

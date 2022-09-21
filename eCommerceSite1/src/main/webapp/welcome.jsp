@@ -1,3 +1,4 @@
+<%@page import="com.ProductModel"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ResourceBundle"%>
@@ -22,22 +23,19 @@
 		<input type="hidden" name="formid" value="ShoppingStarted">
 		<h3><input type="submit" value="Click here"> to show Today's Vegetables and Fruit.</h3>
 		</form>
-		<%List<String> products = new ArrayList<>();
-		products.add("hai");
-		products.add("dai");
-		products.add("jai");
-		products.add("gai");
-		products.add("bai");
-				for (String i : products) {
+		<div class="cardcontainer">
+		<%List<ProductModel> products =(List<ProductModel>)session.getAttribute("allproduct");
+				for (ProductModel p : products) {
 			%> 
-  <div class="cardcontainer"><div class="card">
+  <div class="card">
   <img src="no_product_image.png" alt="Product Image" style="width:100%">
-  <h1>Product Name</h1>
-  <p class="price">₹00.00</p>
+  <h4><%=p.getName()%></h4>
+  <p class="price">₹<%=p.getPrice()%></p>
   <button class="btnaddcart">Add to Cart</button>
   <button class="btnbuy">Buy</button>
-  </div></div>
+  </div>
 <%
 }%> 
+</div>
 </body>
 </html>

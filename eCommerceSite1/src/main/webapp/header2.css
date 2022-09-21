@@ -79,11 +79,12 @@ border: 2px solid red;
 background-color: #e7e7e7;
 }
 header {background-color: GhostWhite;}
-.cardcontainer {width: 1200px; height: 1200px; border: 1px solid #c3c3c3; display: flex; flex-flow: row wrap;}
+.cardcontainer { display: flex; flex-flow: row wrap;}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: fit-content;
-  height: fit-content;
+  max-width: 300px;
+  margin: 10px;
+  padding:10px;
   text-align: center;
   font-family: arial;
 }
@@ -100,14 +101,17 @@ header {background-color: GhostWhite;}
 .card button {
   border: none;
   outline: 0;
-  padding: 12px;
-  width: 40%;
+  padding: 7px;
+  width: fit-content;
   color: white;
   background-color: #000;
   text-align: center;
   cursor: pointer;
   font-size: 18px;
-  margin: 7px;
+  float: left;
+ 
+  
 }
+.btnbuy {margin-left: 16px;} 
 .btnaddcart:hover{background-color: orange; }
 .btnbuy:hover {background-color: blue; }
