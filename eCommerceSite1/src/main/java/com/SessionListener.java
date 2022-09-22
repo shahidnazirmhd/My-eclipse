@@ -29,6 +29,7 @@ public class SessionListener implements HttpSessionListener {
     	session.setAttribute("rb",rb);
     	List<ProductModel> product = DbCon.getInstance().getAllProducts();
     	session.setAttribute("allproduct",product);
+    	
     }
 	/**
      * @see HttpSessionListener#sessionDestroyed(HttpSessionEvent)
