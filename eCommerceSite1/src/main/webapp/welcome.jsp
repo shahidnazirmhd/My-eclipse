@@ -1,6 +1,3 @@
-<%@page import="com.ProductModel"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.ResourceBundle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,22 +14,56 @@
 	session.setAttribute("pagename", "welcome");
 	ResourceBundle rbwel=(ResourceBundle)session.getAttribute("rb");
 %>
-<h3>Vegetables and Fruit Shop</h3><br>
-		<h3>Welcome!</h3><br><br> 
-		<form action="shop1.do;jsessionid=<%= session.getId() %>" method="post">
-		<input type="hidden" name="formid" value="ShoppingStarted">
-		<h3><input type="submit" value="Click here"> to show Today's Vegetables and Fruit.</h3>
-		</form>
-		<div class="cardcontainer">
-		<c:forEach var="product" items="${sessionScope.allproduct}">
-  <div class="card">
-  <img src="no_product_image.png" alt="Product Image" style="width:100%">
-  <h4>${product.getName()}</h4>
-  <p class="price">₹${product.getPrice()}</p>
-  <button class="btnaddcart">Add to Cart</button>
-  <button class="btnbuy">Buy</button>
-  </div>
-</c:forEach>
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <img src="Image-Resources/1617186512494.jpg" style="width:100%; height: auto;">
 </div>
+
+<div class="mySlides fade">
+  <img src="Image-Resources/1620127030833.jpg" style="width:100%; height: auto;">
+</div>
+
+<div class="mySlides fade">
+  <img src="Image-Resources/1617369550601.jpg" style="width:100%; height: auto;">
+</div>
+
+<div class="mySlides fade">
+  <img src="Image-Resources/1617186681814.jpg" style="width:100%; height: auto;">
+</div>
+
+<div class="mySlides fade">
+  <img src="Image-Resources/1617186378359.jpg" style="width:100%; height: auto;">
+</div>
+</div>
+<div class="grpdot" style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+<br>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {	
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 3000); // Change image every 2 seconds
+}
+</script>
 </body>
 </html>

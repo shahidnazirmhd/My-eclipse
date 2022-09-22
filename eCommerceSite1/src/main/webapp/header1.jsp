@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="header1.css">
+<link rel="stylesheet" href="header2.css">
 <meta charset="UTF-8">
 <title>Fallo Fashion-Index</title>
 </head>
@@ -28,18 +28,18 @@
 <form id="toreg" action="registerPage.do" method="POST">
 <input type="hidden" name="formid" value="registerto"></form>
 <hr>
-<h1 id="shopName1">Fallo</h1>
-<h3 id="shopName2">fashion</h3>
-<div class="btn-group">
+<h1 id="mshopName1">Fallo</h1>
+<h3 id="mshopName2">fashion</h3>
+<div class="mbtn-group">
  <button type="submit" form="lge">Engilsh</button>
  <button type="submit" form="lgt">தமிழ்</button>
  <button type="submit" form="lgh">हिन्दी</button>
 </div>
-<h6 id="version"><%=rb.getString("version")%>:</h6>
-<div class="rsidebtns"><button class="btnlogin" type="submit" form="tolog"><%=rb.getString("login")%></button>
-<button class="btnregi" type="submit" form="toreg"><%=rb.getString("register")%></button>
+<h6 id="mversion"><%=rb.getString("version")%>:</h6>
+<div class="mrsidebtns"><button class="mbtnlogin" type="submit" form="tolog"><%=rb.getString("login")%></button>
+<button class="mbtnregi" type="submit" form="toreg"><%=rb.getString("register")%></button>
 </div>
-<hr class="end">		
+<hr class="mend">		
 </header>
 </body>
 </html>

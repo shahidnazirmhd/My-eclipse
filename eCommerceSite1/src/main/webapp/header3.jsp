@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="header1.css">
+<link rel="stylesheet" href="header2.css">
 <meta charset="UTF-8">
 <title>Fallo Fashion-Index</title>
 </head>
