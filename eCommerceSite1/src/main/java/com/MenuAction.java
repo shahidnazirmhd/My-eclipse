@@ -7,9 +7,14 @@ public class MenuAction extends Action{
 @Override
 public String execute(HttpServletRequest request, HttpServletResponse response) {
 	String id=request.getParameter("formid");
-	if(id.equals("showall")) {
+	String categid=request.getParameter("category");
+
+	if(id.equals("categ")) {
+		return categid+".jsp";
+		}
+	else {
 		return id+".jsp";
 	}
-	return null;
+	
 }
 }
