@@ -11,7 +11,7 @@
 </head>
 <body>
 <%
-	session.setAttribute("pagename", "welcome");
+	session.setAttribute("pagename", "shophome");
 	ResourceBundle rbwel=(ResourceBundle)session.getAttribute("rb");
 %>
 <div class="slideshow-container">
