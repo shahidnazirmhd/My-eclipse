@@ -1,8 +1,6 @@
 package com;
 
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RequestProcessor {
+public class RequProcessor {
 	public void process(HttpServletRequest request,HttpServletResponse response) {
 		try {
 			//Part1
@@ -25,7 +23,7 @@ public class RequestProcessor {
 			Action action=(Action)Class.forName(actionClassName).newInstance();
 			String result=action.execute(request, response);
 			String nxtPage=prop.getProperty(result);
-
+			
 			RequestDispatcher rd=request.getRequestDispatcher(nxtPage);
 			rd.forward(request,response);
 			
@@ -33,4 +31,5 @@ public class RequestProcessor {
 			e.printStackTrace();
 		}
 	}
-}
+	}
+

@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("*.do")
 public class ActionController extends HttpServlet {
-	RequestProcessor rp;
+	ReqProcessor rp;
 	@Override
 		public void init(ServletConfig config) throws ServletException {
-			rp=new RequestProcessor();
+			rp=new ReqProcessor();
 		}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

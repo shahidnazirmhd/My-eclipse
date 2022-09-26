@@ -15,10 +15,10 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet("*.do")
 public class ServlertController extends HttpServlet {
-	RequestProcessor rp;
+	RequProcessor rp;
 	@Override
 		public void init(ServletConfig config) throws ServletException {
-			rp=new RequestProcessor();
+			rp=new RequProcessor();
 			
 		}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
